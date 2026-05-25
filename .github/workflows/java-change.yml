@@ -1,0 +1,35 @@
+name: Java Path Filter
+
+on:
+  push:
+    paths:
+      - 'src/**/*.java'
+      - '.github/workflows/**'
+
+  pull_request:
+    paths:
+      - 'src/**/*.java'
+      - '.github/workflows/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Show changed Java workflow
+        run: echo "Java files changed"
+
+      - name: Compile
+        run: javac src/main.java
+
+      - name: Run
+        run: java -cp src main
