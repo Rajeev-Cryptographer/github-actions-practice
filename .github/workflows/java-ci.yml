@@ -32,11 +32,11 @@ jobs:
         run: java -version
 
       - name: Compile Java code
-        run: javac src/Main.java
+        run: javac src/main.java
 
       - name: Run Java program
         run: |
-          java -cp src Main > output.txt
+          java -cp src main > output.txt
 
       - name: Show output
         run: cat output.txt
